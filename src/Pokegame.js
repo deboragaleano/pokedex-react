@@ -24,32 +24,28 @@ class Pokegame extends Component {
             hand1.push(randomPokemon); 
         }
        
-        let calculate = (array => {
-            let total = []; 
-            array.map(exp => {
-                total.push(exp.base_experience)
-            })
-            return total.reduce((a, b) => a + b) 
-        })
+        const exp1 = hand1.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
+        const exp2 = hand2.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
 
-        let isWinner = ((arr1, arr2) => {
-            let msg; 
-            calculate(arr1) > calculate(arr2) 
-            ? msg = <h2 className='Pokegame-msg'>THIS HAND WINS!!</h2>
-            : msg = <h2 className='Pokegame-msg'>THIS HAND LOSES!</h2>
-            return msg; 
-        })
+        // let isWinner = ((arr1, arr2) => {
+        //     let msg; 
+        //     calculate(arr1) > calculate(arr2) 
+        //     ? msg = <h2 className='Pokegame-msg'>THIS HAND WINS!!</h2>
+        //     : msg = <h2 className='Pokegame-msg'>THIS HAND LOSES!</h2>
+        //     return msg; 
+        // })
     
         
         return(
             <div className='Winning'>
                 <Pokedex pokemons = {hand1} 
-                        total = {calculate(hand1)}
-                        winner = {isWinner(hand1, hand2)}
+                         exp= {exp1}
+                         isWinner= {exp1 > exp2}
                 /> 
                 <Pokedex pokemons = {hand2} 
-                        total = {calculate(hand2)}
-                        winner = {isWinner(hand2, hand1)}/>
+                         exp= {exp2}
+                         isWinner= {exp2 > exp1}
+                />
             </div>
         )
     }
