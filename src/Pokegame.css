@@ -1,0 +1,9 @@
+.Pokegame-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.Pokegame-msg {
+    text-align: center;
+}
