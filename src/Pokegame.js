@@ -23,18 +23,9 @@ class Pokegame extends Component {
             let randomPokemon = hand2.splice(randIndex, 1)[0];
             hand1.push(randomPokemon); 
         }
-       
-        const exp1 = hand1.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
-        const exp2 = hand2.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
-
-        // let isWinner = ((arr1, arr2) => {
-        //     let msg; 
-        //     calculate(arr1) > calculate(arr2) 
-        //     ? msg = <h2 className='Pokegame-msg'>THIS HAND WINS!!</h2>
-        //     : msg = <h2 className='Pokegame-msg'>THIS HAND LOSES!</h2>
-        //     return msg; 
-        // })
-    
+        // sum up the base experience with reduce() starting at 0
+        let exp1 = hand1.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
+        let exp2 = hand2.reduce((exp, pokemon) => exp + pokemon.base_experience, 0)
         
         return(
             <div className='Winning'>
